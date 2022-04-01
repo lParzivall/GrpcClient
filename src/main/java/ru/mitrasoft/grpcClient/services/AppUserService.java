@@ -33,5 +33,4 @@ public class AppUserService {
         channel.shutdownNow();
         return appUsers;
     }
-
 }

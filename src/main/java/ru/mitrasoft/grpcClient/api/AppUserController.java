@@ -22,5 +22,4 @@ public class AppUserController {
             @RequestParam(required = true) String password) {
         return appUserService.getAllAppUsers(username, password);
     }
-
 }
