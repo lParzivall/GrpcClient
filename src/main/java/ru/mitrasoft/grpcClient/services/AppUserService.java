@@ -15,14 +15,14 @@ import java.util.List;
 @RequiredArgsConstructor
 public class AppUserService {
 
-    public List<String> getAllAppUsers() {
+    public List<String> getAllAppUsers(String username, String password) {
         ManagedChannel channel = ManagedChannelBuilder.forAddress("localhost", 8081)
                 .usePlaintext().build();
 
         UserServiceGrpc.UserServiceBlockingStub stub = UserServiceGrpc.newBlockingStub(channel);
 
         UserServiceOuterClass.UserServiceRequest request = UserServiceOuterClass.UserServiceRequest
-                .newBuilder().setUsername("admin@mail.ru").setPassword("1234").build();
+                .newBuilder().setUsername(username).setPassword(password).build();
 
         Iterator<UserServiceOuterClass.UserServiceResponse> response = stub.getUsers(request);
         List<String> appUsers = new ArrayList<>();
